@@ -1,0 +1,8 @@
+{
+  "require": {
+    "davtur19/turibot": "^1.4",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "peterkahl/country-code-to-emoji-flag": "^1.2"
+  }
+}

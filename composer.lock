@@ -1,0 +1,103 @@
+{
+  "_readme": [
+    "This file locks the dependencies of your project to a known state",
+    "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+    "This file is @generated automatically"
+  ],
+  "content-hash": "ac2e49bedfd2e662c876c70a52da3b94",
+  "packages": [
+    {
+      "name": "davtur19/turibot",
+      "version": "1.4",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/davtur19/TuriBot.git",
+        "reference": "ec1527f81671cf9d4efa5aada2580fea18f883b1"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/davtur19/TuriBot/zipball/ec1527f81671cf9d4efa5aada2580fea18f883b1",
+        "reference": "ec1527f81671cf9d4efa5aada2580fea18f883b1",
+        "shasum": ""
+      },
+      "require": {
+        "ext-curl": "*",
+        "ext-json": "*",
+        "php": "^7.1"
+      },
+      "type": "project",
+      "autoload": {
+        "psr-4": {
+          "TuriBot\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "AGPL-3.0-or-later"
+      ],
+      "authors": [
+        {
+          "name": "davtur19",
+          "email": "dav.tur19@gmail.com"
+        }
+      ],
+      "description": "A simple way to communicate with Telegram APIs in PHP.",
+      "time": "2020-03-30T17:52:23+00:00"
+    },
+    {
+      "name": "peterkahl/country-code-to-emoji-flag",
+      "version": "v1.2",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/peterkahl/country-code-to-emoji-flag.git",
+        "reference": "e7e9105bd9cf353a7e4091408104596730116fa9"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/peterkahl/country-code-to-emoji-flag/zipball/e7e9105bd9cf353a7e4091408104596730116fa9",
+        "reference": "e7e9105bd9cf353a7e4091408104596730116fa9",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=5.3.0"
+      },
+      "type": "library",
+      "autoload": {
+        "psr-4": {
+          "peterkahl\\flagMaster\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "Apache-2.0"
+      ],
+      "authors": [
+        {
+          "name": "Peter Kahl",
+          "homepage": "https://github.com/peterkahl",
+          "role": "Developer"
+        }
+      ],
+      "description": "Converts string of country codes into string of emoji flags.",
+      "homepage": "https://github.com/peterkahl/country-code-to-emoji-flag",
+      "keywords": [
+        "country",
+        "emoji",
+        "flag"
+      ],
+      "time": "2019-11-21T06:15:04+00:00"
+    }
+  ],
+  "packages-dev": [],
+  "aliases": [],
+  "minimum-stability": "stable",
+  "stability-flags": [],
+  "prefer-stable": false,
+  "prefer-lowest": false,
+  "platform": {
+    "ext-curl": "*",
+    "ext-json": "*"
+  },
+  "platform-dev": [],
+  "plugin-api-version": "1.1.0"
+}
