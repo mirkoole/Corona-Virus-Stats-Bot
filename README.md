@@ -8,6 +8,11 @@ A bot for the Telegram messenger to provide current statistics on the corona vir
 Just say hi to [@CoronananaVirusBot](https://t.me/CoronananaVirusBot) via Telegram. 👋
 
 
+## Screenshots
+
+[![Screenshot](screenshots/screenshot1.png)]()
+
+
 ## Installation
 
 ````sh
