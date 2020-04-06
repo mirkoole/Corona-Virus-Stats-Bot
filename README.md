@@ -10,7 +10,7 @@ Just say hi to [@CoronananaVirusBot](https://t.me/CoronananaVirusBot) via Telegr
 
 ## Screenshots
 
-[![Screenshot](screenshots/screenshot1.png)]()
+[![Screenshot](screenshots/screenshot1.png)](https://t.me/CoronananaVirusBot)
 
 
 ## Installation
