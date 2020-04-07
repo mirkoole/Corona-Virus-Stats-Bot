@@ -1,12 +1,5 @@
 <?php
 
-require_once __DIR__ . "/../vendor/autoload.php";
-
-use peterkahl\flagMaster\flagMaster;
-
-
-
-
 // Method: POST, PUT, GET etc
 // Data: array("param" => "value") ==> index.php?param=value
 

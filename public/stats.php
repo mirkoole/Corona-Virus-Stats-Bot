@@ -1,7 +1,8 @@
 <?php
 
+use peterkahl\flagMaster\flagMaster;
 
-// https://api.covid19api.com/total/dayone/country/germany/status/confirmed
+
 function get_country_history($country = 'germany', $history = 30)
 {
 
@@ -10,9 +11,7 @@ function get_country_history($country = 'germany', $history = 30)
 
     $result = json_decode($result, true);
 
-    $message = 'Last 30 Days of Germany 🇩🇪 
-
-<b>Date - Infections Total</b>' . PHP_EOL . '<pre>';
+    $message = 'Last 30 Days of Germany 🇩🇪 ' . PHP_EOL . PHP_EOL . '<b>Date - Infections Total</b>' . PHP_EOL . '<pre>';
 
     for ($i = sizeof($result) - $history; $i < sizeof($result); $i++) {
 
@@ -36,9 +35,7 @@ function get_country_history_table($country = 'germany', $history = 30)
 
     $result = json_decode($result, true);
 
-    $message = 'Last 30 Days of Germany 🇩🇪 (Table Beta) 
-
-<b>Date - Infections Total</b>' . PHP_EOL . '';
+    $message = 'Last 30 Days of Germany 🇩🇪 (Table Beta)' . PHP_EOL . PHP_EOL . '<b>Date - Infections Total</b>' . PHP_EOL . '';
 
     for ($i = sizeof($result) - $history; $i < sizeof($result); $i++) {
 
@@ -55,7 +52,6 @@ function get_country_history_table($country = 'germany', $history = 30)
     return $message;
 }
 
-// https://api.covid19api.com/summary
 function get_country_status($countryCode = 'DE')
 {
     $result = CallAPI("GET", "https://api.covid19api.com/summary");
@@ -88,7 +84,6 @@ Recovered:  <b>' . $result['TotalRecovered'] . '</b></pre>
 
 }
 
-// https://api.covid19api.com/summary
 function get_world_status()
 {
     $result = CallAPI("GET", "https://api.covid19api.com/summary");
