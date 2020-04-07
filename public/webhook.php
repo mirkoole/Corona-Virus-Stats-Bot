@@ -80,7 +80,7 @@ if (isset($update->message) or isset($update->edited_message)) {
     }
 
     if (LOGGING_ENABLED) {
-        logRequest($text, $chat_id);
+        log_request($text, $chat_id);
     }
 
 }
