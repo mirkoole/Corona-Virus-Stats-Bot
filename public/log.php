@@ -10,9 +10,10 @@ function logRequest($text, $chat_id)
         $db->set_charset('utf8mb4');
 
         $text = $db->real_escape_string($text);
-
-        $db->query("INSERT INTO `requests` (`message`, `chat_id`) VALUES ('$text', '$chat_id');");
-
+        $stmt = $db->prepare("INSERT INTO `requests`  (`message`, `chat_id`) VALUES (?, ?)");
+        $stmt->bind_param("s", $text);
+        $stmt->bind_param("i", $chat_id);
+        $stmt->execute();
     }
 
 }

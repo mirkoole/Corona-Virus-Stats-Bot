@@ -1,11 +1,11 @@
 <?php
 
-function get_nice_number($number)
+function createReadableNumber($number)
 {
     return number_format($number, " ", ".");
 }
 
-function parse_date($date)
+function parseDate($date)
 {
 
     $date = DateTime::createFromFormat('Y-m-d\TH:i:s+', $date);
