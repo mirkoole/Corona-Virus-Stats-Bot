@@ -2,7 +2,12 @@
 
 function get_nice_number($number)
 {
-    return sprintf("%9s", number_format($number, 0, '.', ' '));
+    return sprintf("%9s", get_nice_number_chart($number));
+}
+
+function get_nice_number_chart($number)
+{
+    return number_format($number, 0, '.', ' ');
 }
 
 function parse_date($date)

@@ -1,5 +1,6 @@
 <?php
 
+include 'helper.php';
 include 'settings.php';
 include 'restapi.php';
 
@@ -14,6 +15,7 @@ $result = json_decode($result, true);
 $data = array();
 
 $i = 0;
+$max = 100;
 foreach ($result as $e) {
 
     $date = DateTime::createFromFormat('Y-m-d\TH:i:s+', $e['Date']);
@@ -23,6 +25,8 @@ foreach ($result as $e) {
     $value = (int)$e['Cases'];
 
     $data[$key] = $value;
+
+    $max = max($max, $value);
 
     $i++;
 }
@@ -37,7 +41,7 @@ $imageHeight = 600;
 
 // Grid dimensions and placement within image
 $gridTop = 50;
-$gridLeft = 50 + 25;
+$gridLeft = 50 + 50;
 $gridBottom = $imageHeight - 50;
 $gridRight = $imageWidth - 50;
 $gridHeight = $gridBottom - $gridTop;
@@ -45,7 +49,7 @@ $gridWidth = $gridRight - $gridLeft;
 
 // Bar and line width
 $lineWidth = 1;
-$barWidth = 4;
+$barWidth = 3;
 
 // Font settings
 #$font = '/System/Library/Fonts/Supplemental/Verdana.ttf';
@@ -56,7 +60,7 @@ $fontSize = 10;
 $labelMargin = 8;
 
 // Max value on y-axis
-$yMaxValue = 100000;
+$yMaxValue = $max;
 
 // Distance between grid lines on y-axis
 $yLabelSpan = 10000;
@@ -92,7 +96,7 @@ for ($i = 0; $i <= $yMaxValue; $i += $yLabelSpan) {
     $labelX = $gridLeft - $labelWidth - $labelMargin;
     $labelY = $y + $fontSize / 2;
 
-    imagettftext($chart, $fontSize, 0, $labelX, $labelY, $labelColor, $font, strval($i));
+    imagettftext($chart, $fontSize, 0, $labelX, $labelY, $labelColor, $font, get_nice_number_chart($i));
 }
 
 /*
