@@ -75,7 +75,7 @@ if (isset($update->message) or isset($update->edited_message)) {
 
     if ($text === "Magic Button") {
         $client->sendMessage($chat_id, " 🎩🐇  ");
-        $next = 'Features (coming soon):' . PHP_EOL . '- visual stats ' . PHP_EOL . '- better readability for long numbers' . PHP_EOL . '- more countries';
+        $next = 'Features (coming soon):' . PHP_EOL . '- visual stats ' . PHP_EOL . '- more countries';
         $client->sendMessage($chat_id, $next, null, null, null, null, $menu);
     }
 

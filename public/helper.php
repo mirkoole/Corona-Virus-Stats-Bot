@@ -2,7 +2,7 @@
 
 function get_nice_number($number)
 {
-    return number_format($number, " ", ".");
+    return sprintf("%9s", number_format($number, 0, '.', ' '));
 }
 
 function parse_date($date)
@@ -23,7 +23,7 @@ function parse_date($date)
 }
 
 
-function searchForId($id, $array)
+function search_for_id($id, $array)
 {
     foreach ($array as $key => $val) {
         if ($val['CountryCode'] === $id) {

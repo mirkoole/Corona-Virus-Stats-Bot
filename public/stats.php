@@ -18,7 +18,7 @@ function get_country_history($country = 'germany', $history = 30)
         $date = DateTime::createFromFormat('Y-m-d\TH:i:s+', $result[$i]['Date']);
         $date = $date->format('d.m.Y');
 
-        $message .= PHP_EOL . $date . ' - ' . $result[$i]['Cases'];
+        $message .= PHP_EOL . $date . ' - ' . get_nice_number($result[$i]['Cases']);
 
     }
 
@@ -59,7 +59,7 @@ function get_country_status($countryCode = 'DE')
 
     $result = json_decode($result, true);
 
-    $countryID = searchForId($countryCode, $result['Countries']);
+    $countryID = search_for_id($countryCode, $result['Countries']);
 
     $result = $result['Countries'][$countryID];
 
@@ -67,18 +67,18 @@ function get_country_status($countryCode = 'DE')
 
     $result = $result['Country'] . ' Corona Infections ' . flagMaster::emojiFlag($result['CountryCode']) . '
 
-<b>Today</b> 🗓
-<pre>New Infections: <b>+' . $result['NewConfirmed'] . '</b>
-New Deaths:     <b>+' . $result['NewDeaths'] . '</b>
-New Recovered:  <b>+' . $result['NewRecovered'] . '</b></pre>
+<b>Today</b> 🗓 <pre>
+New Infections: <b>' . get_nice_number($result['NewConfirmed']) . '</b>
+New Deaths:     <b>' . get_nice_number($result['NewDeaths']) . '</b>
+New Recovered:  <b>' . get_nice_number($result['NewRecovered']) . '</b>
+</pre>
 
-<b>Total</b> 📈
-<pre>Infections: <b>' . $result['TotalConfirmed'] . '</b>
-Deaths:     <b>' . $result['TotalDeaths'] . '</b>
-Recovered:  <b>' . $result['TotalRecovered'] . '</b></pre>
-
+<b>Total</b> 📈 <pre>
+Infections: <b>' . get_nice_number($result['TotalConfirmed']) . '</b>
+Deaths:     <b>' . get_nice_number($result['TotalDeaths']) . '</b>
+Recovered:  <b>' . get_nice_number($result['TotalRecovered']) . '</b>
+</pre>
 ' . $date;
-
 
     return $result;
 
@@ -95,16 +95,16 @@ function get_world_status()
 
     $result = 'Worldwide Corona Infections 🌎🌍🌏
 
-<b>Today</b> 🗓
-<pre>New Infections: <b>+' . $result['Global']['NewConfirmed'] . '</b>
-New Deaths:     <b>+' . $result['Global']['NewDeaths'] . '</b>
-New Recovered:  <b>+' . $result['Global']['NewRecovered'] . '</b></pre>
+<b>Today</b> 🗓 <pre>
+New Infections: <b>' . get_nice_number($result['Global']['NewConfirmed']) . '</b>
+New Deaths:     <b>' . get_nice_number($result['Global']['NewDeaths']) . '</b>
+New Recovered:  <b>' . get_nice_number($result['Global']['NewRecovered']) . '</b></pre>
 
-<b>Total</b> 📈
-<pre>Infections: <b>' . $result['Global']['TotalConfirmed'] . '</b>
-Deaths:     <b>' . $result['Global']['TotalDeaths'] . '</b>
-Recovered:  <b>' . $result['Global']['TotalRecovered'] . '</b></pre>
-
+<b>Total</b> 📈 <pre>
+Infections: <b>' . get_nice_number($result['Global']['TotalConfirmed']) . '</b>
+Deaths:     <b>' . get_nice_number($result['Global']['TotalDeaths']) . '</b>
+Recovered:  <b>' . get_nice_number($result['Global']['TotalRecovered']) . '</b>
+</pre>
 ' . $date;
 
 
