@@ -1,9 +1,12 @@
 <?php
 
-
 require_once __DIR__ . "/../vendor/autoload.php";
-require_once 'restapi.php';
 
+require_once 'settings.php';
+require_once 'log.php';
+require_once 'helper.php';
+require_once 'restapi.php';
+require_once 'stats.php';
 
 use TuriBot\Client;
 
@@ -71,8 +74,13 @@ if (isset($update->message) or isset($update->edited_message)) {
     }
 
     if ($text === "Magic Button") {
-        $client->sendMessage($chat_id, " 🎩🐇  ", null, null, null, null, $menu);
+        $client->sendMessage($chat_id, " 🎩🐇  ");
+        $next = 'Features (coming soon):' . PHP_EOL . '- visual stats ' . PHP_EOL . '- better readability for long numbers' . PHP_EOL . '- more countries';
+        $client->sendMessage($chat_id, $next, null, null, null, null, $menu);
     }
 
+    if (LOGGING_ENABLED) {
+        logRequest($text, $chat_id);
+    }
 
 }

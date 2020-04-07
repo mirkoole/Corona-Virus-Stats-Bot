@@ -7,3 +7,5 @@ composer.phar
 
 .idea
 .DS_Store
+
+public/settings.php
