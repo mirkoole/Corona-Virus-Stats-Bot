@@ -51,22 +51,22 @@ if (isset($update->message) or isset($update->edited_message)) {
     }
 
     if ($text === "x") {
-        $result = get_country_history_table('germany', 30);
+        $result = getCountryHistoryTable('germany', 30);
         $client->sendMessage($chat_id, $result, 'HTML', null, null, null, $menu);
     }
 
     if ($text === "Germany History") {
-        $result = get_country_history('germany', 30);
+        $result = getCountryHistory('germany', 30);
         $client->sendMessage($chat_id, $result, 'HTML', null, null, null, $menu);
     }
 
     if ($text === "Germany Status") {
-        $result = get_country_status('DE');
+        $result = getCountryStatus('DE');
         $client->sendMessage($chat_id, $result, 'HTML', null, null, null, $menu);
     }
 
     if ($text === "World Status") {
-        $result = get_world_status();
+        $result = getWorldStatus();
         $client->sendMessage($chat_id, $result, 'HTML', null, null, null, $menu);
     }
 
