@@ -3,8 +3,10 @@
 require_once __DIR__ . "/../vendor/autoload.php";
 
 require_once 'settings.php';
-require_once 'restapi.php';
 require_once 'log.php';
+require_once 'helper.php';
+require_once 'restapi.php';
+require_once 'stats.php';
 
 use TuriBot\Client;
 
