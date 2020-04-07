@@ -2,6 +2,7 @@
 
 // Settings
 define("LOGGING_ENABLED", "0");
+define("CHART_LABEL_COUNT", "10");
 
 // Database Login
 define("MYSQLI_HOST", "");

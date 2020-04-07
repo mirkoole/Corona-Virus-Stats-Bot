@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cecaef817fb4eeb2e5416f2c704e0947",
+    "content-hash": "dd7895085060abee8c28fb77074382aa",
     "packages": [
         {
             "name": "davtur19/turibot",
@@ -97,7 +97,8 @@
     "platform": {
         "ext-curl": "*",
         "ext-json": "*",
-        "ext-mysqli": "*"
+        "ext-mysqli": "*",
+        "php": "^7.1"
     },
     "platform-dev": [],
     "plugin-api-version": "1.1.0"

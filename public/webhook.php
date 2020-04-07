@@ -58,9 +58,14 @@ if (isset($update->message) or isset($update->edited_message)) {
         $client->sendMessage($chat_id, $result, 'HTML', null, null, null, $menu);
     }
 
+    if ($text === "xx") {
+        #$client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image.php?date=" . date("d.m.y") . time(), null, null, null, null, $menu);
+    }
+
     if ($text === "Germany History") {
         $result = get_country_history('germany', 30);
         $client->sendMessage($chat_id, $result, 'HTML', null, null, null, $menu);
+        $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image.php?date=" . date("y-m-d"), null, null, null, null, $menu);
     }
 
     if ($text === "Germany Status") {
@@ -75,8 +80,9 @@ if (isset($update->message) or isset($update->edited_message)) {
 
     if ($text === "Magic Button") {
         $client->sendMessage($chat_id, " 🎩🐇  ");
-        $next = 'Features (coming soon):' . PHP_EOL . '- visual stats ' . PHP_EOL . '- more countries';
+        $next = 'Features (coming soon):' . PHP_EOL . '- visual stats ' . PHP_EOL . '- more countries' . PHP_EOL . '- world peace';
         $client->sendMessage($chat_id, $next, null, null, null, null, $menu);
+        $client->sendSticker($chat_id, 0, null, null, null);
     }
 
     if (LOGGING_ENABLED) {

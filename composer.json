@@ -4,6 +4,8 @@
     "ext-curl": "*",
     "ext-json": "*",
     "peterkahl/country-code-to-emoji-flag": "^1.2",
-    "ext-mysqli": "*"
+    "ext-mysqli": "*",
+    "php": "^7.1",
+    "ext-gd": "*"
   }
 }
