@@ -65,7 +65,7 @@ if (isset($update->message) or isset($update->edited_message)) {
     if ($text === "Germany History") {
         $result = get_country_history('germany', 30);
         $client->sendMessage($chat_id, $result, 'HTML', null, null, null, $menu);
-        $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image.php?date=" . date("y-m-d"), null, null, null, null, $menu);
+        $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image.php?date=" . date("y-m-d-H"), null, null, null, null, $menu);
     }
 
     if ($text === "Germany Status") {
