@@ -62,7 +62,7 @@ function get_country_status($countryCode = 'DE')
     $countryID = search_for_id($countryCode, $result['Countries']);
 
     if ($countryID == NULL) {
-        return 'Sorry, data is currently n/a.';
+        return 'Sorry, data is currently not available, but will return tomorrow (hopefully).';
     }
 
     $result = $result['Countries'][$countryID];
