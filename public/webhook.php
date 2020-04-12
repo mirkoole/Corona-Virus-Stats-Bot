@@ -74,8 +74,10 @@ if (isset($update->message) or isset($update->edited_message)) {
     }
 
     if ($text === "World Status") {
-        $result = get_world_status();
+        $world_status_data = get_world_status_data();
+        $result = get_world_status($world_status_data);
         $client->sendMessage($chat_id, $result, 'HTML', null, null, null, $menu);
+        $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image2.php?date=" . date("y-m-d-H"), null, null, null, null, $menu);
     }
 
     if ($text === "Magic Button") {
