@@ -2,7 +2,7 @@
 
 use peterkahl\flagMaster\flagMaster;
 
-define("API_URL", "https://staging.covid19api.com");
+define("API_URL", "https://api.covid19api.com");
 
 function get_country_history($country = 'germany', $history = 30)
 {
