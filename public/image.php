@@ -96,7 +96,7 @@ for ($i = 0; $i <= $yMaxValue; $i += $yLabelSpan) {
     $labelX = $gridLeft - $labelWidth - $labelMargin;
     $labelY = $y + $fontSize / 2;
 
-    imagettftext($chart, $fontSize, 0, $labelX, $labelY, $labelColor, $font, get_nice_number_chart($i));
+    imagettftext($chart, $fontSize, 0, $labelX, $labelY, $labelColor, $font, get_nice_number($i));
 }
 
 /*
@@ -139,6 +139,9 @@ foreach ($data as $key => $value) {
 
     $i++;
 }
+
+imagettftext($chart, 14, 0, 220, 30, $labelColor, $font, "Covid-19 Infections Total Germany");
+imagettftext($chart, 7, 0, 250, 590, $labelColor, $font, "via Telegram Bot @CoronananaVirusBot powered by covid19api.com");
 
 /*
  * Output image to browser
