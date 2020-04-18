@@ -14,7 +14,6 @@ $result = json_decode($result, true);
 
 $data = array();
 
-$i = 0;
 $max = 100;
 foreach ($result as $e) {
 
@@ -24,11 +23,12 @@ foreach ($result as $e) {
     $key = $date;
     $value = (int)$e['Cases'];
 
-    $data[$key] = $value;
+    // this removes Jan-Feb 2020 from the chart
+    if ($value > 100) {
+        $data[$key] = $value;
+        $max = max($max, $value);
+    }
 
-    $max = max($max, $value);
-
-    $i++;
 }
 
 /*
@@ -115,6 +115,7 @@ $itemX = $gridLeft + $barSpacing / 2;
 
 $m = round(sizeof($data) / CHART_LABEL_COUNT);
 $i = 0;
+$l = 0;
 foreach ($data as $key => $value) {
     // Draw the bar
     $x1 = $itemX - $barWidth / 2;
@@ -132,6 +133,8 @@ foreach ($data as $key => $value) {
     $labelY = $gridBottom + $labelMargin + $fontSize;
 
     if ($i % $m == 0) {
+        if($l % 2 != 0) $labelY += 15;
+        $l++;
         imagettftext($chart, $fontSize, 0, $labelX, $labelY, $labelColor, $font, $key);
     }
 
@@ -140,8 +143,8 @@ foreach ($data as $key => $value) {
     $i++;
 }
 
-imagettftext($chart, 14, 0, 220, 30, $labelColor, $font, "Covid-19 Infections Total Germany");
-imagettftext($chart, 7, 0, 250, 590, $labelColor, $font, "via Telegram Bot @CoronananaVirusBot powered by covid19api.com");
+imagettftext($chart, 14, 0, 220, 30, $labelColor, $font, "COVID-19 Infections Total Germany");
+imagettftext($chart, 7, 0, 250, 45, $labelColor, $font, "via Telegram Bot @CoronananaVirusBot powered by covid19api.com");
 
 /*
  * Output image to browser
