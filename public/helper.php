@@ -1,11 +1,11 @@
 <?php
 
-function get_nice_number($number)
+function get_nice_number_textaligned($number)
 {
-    return sprintf("%9s", get_nice_number_chart($number));
+    return sprintf("%9s", get_nice_number($number));
 }
 
-function get_nice_number_chart($number)
+function get_nice_number($number)
 {
     return number_format($number, 0, '.', ' ');
 }
@@ -23,17 +23,18 @@ function parse_date($date)
     $min_ago = (int)($diff / 60);
 
     return 'Last Update: <i>' . $min_ago . ' min ago</i>' . PHP_EOL . '<i>' . $date_utc . '</i>';
-
-
 }
 
 
 function search_for_id($id, $array)
 {
     foreach ($array as $key => $val) {
+
         if ($val['CountryCode'] === $id) {
             return $key;
         }
+
     }
+
     return null;
 }
