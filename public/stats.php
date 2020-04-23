@@ -29,9 +29,7 @@ function get_country_history($country = 'germany', $history = 30)
 
 function get_country_history_table($country = 'germany', $history = 30)
 {
-
     $result = CallAPI("GET", API_URL . "/total/dayone/country/$country/status/confirmed");
-    #$result = '[{"Country":"Germany","CountryCode":"","Lat":"0","Lon":"0","Cases":96092,"Status":"confirmed","Date":"2020-04-04T00:00:00Z"},{"Country":"Germany","CountryCode":"","Lat":"0","Lon":"0","Cases":100123,"Status":"confirmed","Date":"2020-04-05T00:00:00Z"}]';
 
     $result = json_decode($result, true);
 

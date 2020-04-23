@@ -7,7 +7,7 @@ function get_nice_number_textaligned($number)
 
 function get_nice_number($number)
 {
-    return number_format($number, 0, '.', ' ');
+    return number_format($number, 0, ',', '.');
 }
 
 function parse_date($date)
