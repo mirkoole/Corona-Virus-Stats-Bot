@@ -10,18 +10,14 @@ Just say hi to [@CoronananaVirusBot](https://t.me/CoronananaVirusBot) via Telegr
 
 ## Screenshots
 
-[![Screenshot](screenshots/screenshot1.png)](https://t.me/CoronananaVirusBot)
+Action Buttons | Text Stats & Charts
+:-:|:-:
+[![Screenshot](screenshots/screenshot1.png)](https://t.me/CoronananaVirusBot)  |  [![Screenshot](screenshots/screenshot2.png)](https://t.me/CoronananaVirusBot)
 
-
-## Installation
-
-````sh
-composer install
-````
 
 ## Setup
 
-Head over to https://github.com/davtur19/TuriBot 
+Head over to https://github.com/davtur19/TuriBot
 
 
 ## Built With
@@ -34,4 +30,3 @@ Head over to https://github.com/davtur19/TuriBot
 ## License
 
 This project is licensed under the GNU GPL v3 License - see the [LICENSE](LICENSE) file for details
-
