@@ -11,6 +11,10 @@ function get_country_history($country = 'germany', $history = 30)
 
     $result = json_decode($result, true);
 
+    if ($result == NULL) {
+        return 'Sorry, data is currently not available, but will return tomorrow (hopefully). 😐 ';
+    }
+
     $message = 'Last 30 Days of Germany 🇩🇪 ' . PHP_EOL . PHP_EOL . '<b>Date - Infections Total</b>' . PHP_EOL . '<pre>';
 
     for ($i = sizeof($result) - $history; $i < sizeof($result); $i++) {
@@ -32,6 +36,10 @@ function get_country_history_table($country = 'germany', $history = 30)
     $result = CallAPI("GET", API_URL . "/total/dayone/country/$country/status/confirmed");
 
     $result = json_decode($result, true);
+
+    if ($result == NULL) {
+        return 'Sorry, data is currently not available, but will return tomorrow (hopefully). 😐 ';
+    }
 
     $message = 'Last 30 Days of Germany 🇩🇪 (Table Beta)' . PHP_EOL . PHP_EOL . '<b>Date - Infections Total</b>' . PHP_EOL . '';
 
@@ -55,6 +63,10 @@ function get_country_status($countryCode = 'DE')
     $result = CallAPI("GET", API_URL . "/summary");
 
     $result = json_decode($result, true);
+
+    if ($result == NULL) {
+        return 'Sorry, data is currently not available, but will return tomorrow (hopefully). 😐 ';
+    }
 
     $countryID = search_for_id($countryCode, $result['Countries']);
 
@@ -88,6 +100,10 @@ Recovered:  <b>' . get_nice_number_textaligned($result['TotalRecovered']) . '</b
 function get_world_status($world_status_data)
 {
     $result = $world_status_data;
+
+    if ($result == NULL) {
+        return 'Sorry, data is currently not available, but will return tomorrow (hopefully). 😐 ';
+    }
 
     $date = parse_date($result['Date']);
 

@@ -56,13 +56,19 @@ if (isset($update->message) or isset($update->edited_message)) {
     if ($text === "Germany History") {
         $result = get_country_history('germany', 30);
         $client->sendMessage($chat_id, $result, 'HTML', null, null, null, $menu);
-        $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image.php?date=a_" . date("y-m-d-H"), null, null, null, null, $menu);
+        if (substr($result, 0, 6) != 'Sorry') {
+            $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image.php?date=a_" . date("y-m-d-H"), null, null, null, null, $menu);
+        }
     }
 
     if ($text === "Germany Status") {
         $result = get_country_status('DE');
         $client->sendMessage($chat_id, $result, 'HTML', null, null, null, $menu);
-        $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image_active.php?date=b_" . date("y-m-d-H"), null, null, null, null, $menu);    }
+        $client->sendMessage($chat_id, "Our data source is missing data on some dates. We are sorry.", 'HTML', null, null, null, $menu);
+        if (substr($result, 0, 6) != 'Sorry') {
+            $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image_active.php?date=b_" . date("y-m-d-H"), null, null, null, null, $menu);
+        }
+    }
 
     if ($text === "World Status") {
         $world_status_data = get_world_status_data();
