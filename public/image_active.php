@@ -144,7 +144,7 @@ foreach ($data as $key => $value) {
     $labelY = $gridBottom + $labelMargin + $fontSize;
 
     if ($i % $m == 0) {
-        #if ($l % 2 != 0) $labelY += 15;
+        if ($l % 2 != 0) $labelY += 15;
         $l++;
         imagettftext($chart, $fontSize, 0, $labelX, $labelY, $labelColor, $font, $key);
     }
