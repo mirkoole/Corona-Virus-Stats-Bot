@@ -4,18 +4,20 @@ use peterkahl\flagMaster\flagMaster;
 
 define("API_URL", "https://api.covid19api.com");
 
-function get_country_history($country = 'germany', $history = 30)
+function get_country_history($country = 'germany', $countrycode = 'DE', $history = 30)
 {
 
     $result = CallAPI("GET", API_URL . "/total/dayone/country/$country/status/confirmed");
+    $country = ucwords($country);
 
     $result = json_decode($result, true);
+    var_dump($result);
 
     if ($result == NULL) {
         return 'Sorry, data is currently not available, but will return tomorrow (hopefully). 😐 ';
     }
 
-    $message = 'Last 30 Days of Germany 🇩🇪 ' . PHP_EOL . PHP_EOL . '<b>Date - Infections Total</b>' . PHP_EOL . '<pre>';
+    $message = 'Last 30 Days of ' . $country . ' ' . flagMaster::emojiFlag($countrycode) . ' ' . PHP_EOL . PHP_EOL . '<b>Date - Infections Total</b>' . PHP_EOL . '<pre>';
 
     for ($i = sizeof($result) - $history; $i < sizeof($result); $i++) {
 
