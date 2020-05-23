@@ -7,8 +7,9 @@ include 'restapi.php';
 /*
  * Chart data
  */
-
-$result = CallAPI("GET", "https://api.covid19api.com/live/country/germany");
+$country = $_GET['country'];
+$result = CallAPI("GET", "https://api.covid19api.com/live/country/$country");
+$country = ucwords($country);
 
 $result = json_decode($result, true);
 
@@ -68,6 +69,13 @@ $yLabelSpan = 5000;
 
 // Max value on y-axis
 $yMaxValue = $max + $yLabelSpan;
+
+// Max value on y-axis
+$yMaxValue = round($max * 1.1, -4);
+
+// Distance between grid lines on y-axis
+$yLabelSpan = round($max * 0.1, -4);
+
 
 // Init image
 $chart = imagecreate($imageWidth, $imageHeight);
@@ -154,7 +162,7 @@ foreach ($data as $key => $value) {
     $i++;
 }
 
-imagettftext($chart, 14, 0, 190, 30, $labelColor, $font, "COVID-19 Active Infections & Deaths Germany");
+imagettftext($chart, 14, 0, 190, 30, $labelColor, $font, "COVID-19 Active Infections & Deaths $country");
 imagettftext($chart, 7, 0, 250, 45, $labelColor, $font, "via Telegram Bot @CoronananaVirusBot powered by covid19api.com");
 imagettftext($chart, 11, 0, 290, 70, $barColor_red, $font, "Active = RED");
 imagettftext($chart, 11, 0, 410, 70, $barColor_black, $font, "Death = BLACK");

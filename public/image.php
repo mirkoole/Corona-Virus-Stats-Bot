@@ -8,7 +8,9 @@ include 'restapi.php';
  * Chart data
  */
 
-$result = CallAPI("GET", "https://api.covid19api.com/total/dayone/country/germany/status/confirmed");
+$country = $_GET['country'];
+$result = CallAPI("GET", "https://api.covid19api.com/total/dayone/country/$country/status/confirmed");
+$country = ucwords($country);
 
 $result = json_decode($result, true);
 
@@ -60,10 +62,12 @@ $fontSize = 10;
 $labelMargin = 8;
 
 // Max value on y-axis
-$yMaxValue = $max + 10000;
+$yMaxValue = round($max * 1.1, -4);
 
 // Distance between grid lines on y-axis
-$yLabelSpan = 10000;
+$yLabelSpan = ($yMaxValue * 0.1);
+#$yLabelSpan = round($max * 0.1, -4);
+
 
 // Init image
 $chart = imagecreate($imageWidth, $imageHeight);
@@ -133,7 +137,7 @@ foreach ($data as $key => $value) {
     $labelY = $gridBottom + $labelMargin + $fontSize;
 
     if ($i % $m == 0) {
-        if($l % 2 != 0) $labelY += 15;
+        if ($l % 2 != 0) $labelY += 15;
         $l++;
         imagettftext($chart, $fontSize, 0, $labelX, $labelY, $labelColor, $font, $key);
     }
@@ -143,7 +147,7 @@ foreach ($data as $key => $value) {
     $i++;
 }
 
-imagettftext($chart, 14, 0, 220, 30, $labelColor, $font, "COVID-19 Infections Total Germany");
+imagettftext($chart, 14, 0, 220, 30, $labelColor, $font, "COVID-19 Infections Total $country");
 imagettftext($chart, 7, 0, 250, 45, $labelColor, $font, "via Telegram Bot @CoronananaVirusBot powered by covid19api.com");
 
 /*

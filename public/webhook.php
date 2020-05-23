@@ -46,6 +46,14 @@ if (isset($update->message) or isset($update->edited_message)) {
                 "text" => "Germany History",
             ],
         ],
+        [
+            [
+                "text" => "Sweden Status",
+            ],
+            [
+                "text" => "Sweden History",
+            ],
+        ],
     ];
 
     if ($text === "/start") {
@@ -53,22 +61,6 @@ if (isset($update->message) or isset($update->edited_message)) {
         $client->sendMessage($chat_id, "Press a button to use me.", null, null, null, null, $menu);
     }
 
-    if ($text === "Germany History") {
-        $result = get_country_history('germany', 30);
-        $client->sendMessage($chat_id, $result, 'HTML', null, null, null, $menu);
-        if (substr($result, 0, 6) != 'Sorry') {
-            $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image.php?date=a_" . date("y-m-d-H"), null, null, null, null, $menu);
-        }
-    }
-
-    if ($text === "Germany Status") {
-        $result = get_country_status('DE');
-        $client->sendMessage($chat_id, $result, 'HTML', null, null, null, $menu);
-        $client->sendMessage($chat_id, "Our data source is missing data on some dates. We are sorry.", 'HTML', null, null, null, $menu);
-        if (substr($result, 0, 6) != 'Sorry') {
-            $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image_active.php?date=b_" . date("y-m-d-H"), null, null, null, null, $menu);
-        }
-    }
 
     if ($text === "World Status") {
         $world_status_data = get_world_status_data();
@@ -82,8 +74,51 @@ if (isset($update->message) or isset($update->edited_message)) {
         $client->sendMessage($chat_id, $next, null, null, null, null, $menu);
     }
 
+    if ($text === "Germany History") {
+        country_history_wrapper('germany', $client, $chat_id, $menu);
+    }
+
+    if ($text === "Sweden History") {
+        country_history_wrapper('sweden', $client, $chat_id, $menu);
+    }
+
+    if ($text === "Germany Status") {
+        country_status_wrapper('DE', 'germany', $client, $chat_id, $menu);
+    }
+
+    if ($text === "Sweden Status") {
+        country_status_wrapper('SE', 'sweden', $client, $chat_id, $menu);
+    }
+
+    if ($text === "USA Status") {
+        country_status_wrapper('US', 'united-states', $client, $chat_id, $menu);
+    }
+
+    if ($text === "USA History") {
+        country_history_wrapper('united-states', $client, $chat_id, $menu);
+    }
+
     if (LOGGING_ENABLED) {
         log_request($text, $chat_id);
     }
 
+}
+
+function country_history_wrapper($country, $client, $chat_id, $menu)
+{
+    $result = get_country_history($country, 30);
+    $client->sendMessage($chat_id, $result, 'HTML', null, null, null, $menu);
+    if (substr($result, 0, 6) != 'Sorry') {
+        $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image.php?v=1&country=$country&date=" . date("y-m-d-H"), null, null, null, null, $menu);
+    }
+}
+
+function country_status_wrapper($countrycode, $country, $client, $chat_id, $menu)
+{
+    $result = get_country_status($countrycode);
+    $client->sendMessage($chat_id, $result, 'HTML', null, null, null, $menu);
+    $client->sendMessage($chat_id, "Our data source is missing data on some dates. We are sorry.", 'HTML', null, null, null, $menu);
+    if (substr($result, 0, 6) != 'Sorry') {
+        $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image_active.php?v=1&country=$country&date=" . date("y-m-d-H"), null, null, null, null, $menu);
+    }
 }
