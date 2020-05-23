@@ -109,7 +109,7 @@ function country_history_wrapper($country, $client, $chat_id, $menu)
     $result = get_country_history($country, 30);
     $client->sendMessage($chat_id, $result, 'HTML', null, null, null, $menu);
     if (substr($result, 0, 6) != 'Sorry') {
-        $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image.php?v=1&country=$country&date=" . date("y-m-d-H"), null, null, null, null, $menu);
+        $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image.php?v=2&country=$country&date=" . date("y-m-d-H"), null, null, null, null, $menu);
     }
 }
 
@@ -119,6 +119,6 @@ function country_status_wrapper($countrycode, $country, $client, $chat_id, $menu
     $client->sendMessage($chat_id, $result, 'HTML', null, null, null, $menu);
     $client->sendMessage($chat_id, "Our data source is missing data on some dates. We are sorry.", 'HTML', null, null, null, $menu);
     if (substr($result, 0, 6) != 'Sorry') {
-        $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image_active.php?v=1&country=$country&date=" . date("y-m-d-H"), null, null, null, null, $menu);
+        $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image_active.php?v=2&country=$country&date=" . date("y-m-d-H"), null, null, null, null, $menu);
     }
 }

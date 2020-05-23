@@ -74,7 +74,7 @@ $yMaxValue = $max + $yLabelSpan;
 $yMaxValue = round($max * 1.1, -4);
 
 // Distance between grid lines on y-axis
-$yLabelSpan = round($max * 0.1, -4);
+$yLabelSpan = round($max * 0.1, -3);
 
 
 // Init image
