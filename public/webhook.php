@@ -83,12 +83,15 @@ if (isset($update->message) or isset($update->edited_message)) {
         ],
     ];
 
+    if (LOGGING_ENABLED) {
+        log_request($text, $chat_id);
+    }
+
     if ($text === "/start") {
         $client->sendMessage($chat_id, "Hello! :)");
         $client->sendMessage($chat_id, "Press a button to use me.", null, null, null, null, $menu);
         return;
     }
-
 
     if ($text === "World 🚑") {
         $world_status_data = get_world_status_data();
@@ -175,10 +178,6 @@ if (isset($update->message) or isset($update->edited_message)) {
     }
 
     $client->sendMessage($chat_id, "Press a button to use me. 😏", null, null, null, null, $menu);
-
-    if (LOGGING_ENABLED) {
-        log_request($text, $chat_id);
-    }
 
 }
 
