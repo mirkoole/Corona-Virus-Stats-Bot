@@ -11,8 +11,8 @@ Just say hi to [@CoronananaVirusBot](https://t.me/CoronananaVirusBot) via Telegr
 ## Screenshots
 
 Action Buttons | Text Stats & Charts
-:-:|:-:
-[![Screenshot](screenshots/screenshot1.png)](https://t.me/CoronananaVirusBot)  |  [![Screenshot](screenshots/screenshot2.png)](https://t.me/CoronananaVirusBot)
+:-:|:-:|:-:
+[![Screenshot](screenshots/screenshot1.png)](https://t.me/CoronananaVirusBot)  |  [![Screenshot](screenshots/screenshot2.png)](https://t.me/CoronananaVirusBot)[![Screenshot](screenshots/screenshot3.png)](https://t.me/CoronananaVirusBot)
 
 
 ## Setup
