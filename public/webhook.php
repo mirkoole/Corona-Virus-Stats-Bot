@@ -32,53 +32,53 @@ if (isset($update->message) or isset($update->edited_message)) {
     $menu["keyboard"] = [
         [
             [
-                "text" => "World 🚑",
+                "text" => "🌎🌍🌏 🚑",
             ],
             [
-                "text" => "Germany 🚑",
+                "text" => "🇩🇪 🚑",
             ],
             [
-                "text" => "Germany 🗓",
-            ],
-        ],
-        [
-            [
-                "text" => "Sweden 🚑",
-            ],
-            [
-                "text" => "Sweden 🗓",
-            ],
-            [
-                "text" => "Italy 🚑",
-            ],
-            [
-                "text" => "Italy 🗓",
-            ],
-            [
-                "text" => "Spain 🚑",
-            ],
-            [
-                "text" => "Spain 🗓",
+                "text" => "🇩🇪 🗓",
             ],
         ],
         [
             [
-                "text" => "Brazil 🚑",
+                "text" => "🇸🇪 🚑",
             ],
             [
-                "text" => "Brazil 🗓",
+                "text" => "🇸🇪 🗓",
             ],
             [
-                "text" => "USA 🚑",
+                "text" => "🇮🇹 🚑",
             ],
             [
-                "text" => "USA 🗓",
+                "text" => "🇮🇹 🗓",
             ],
             [
-                "text" => "Russia 🚑",
+                "text" => "🇪🇸 🚑",
             ],
             [
-                "text" => "Russia 🗓",
+                "text" => "🇪🇸 🗓",
+            ],
+        ],
+        [
+            [
+                "text" => "🇧🇷 🚑",
+            ],
+            [
+                "text" => "🇧🇷 🗓",
+            ],
+            [
+                "text" => "🇺🇸 🚑",
+            ],
+            [
+                "text" => "🇺🇸 🗓",
+            ],
+            [
+                "text" => "🇷🇺 🚑",
+            ],
+            [
+                "text" => "🇷🇺 🗓",
             ],
         ],
     ];
@@ -93,7 +93,7 @@ if (isset($update->message) or isset($update->edited_message)) {
         return;
     }
 
-    if ($text === "World 🚑") {
+    if ($text === "🌎🌍🌏 🚑") {
         $world_status_data = get_world_status_data();
         $result = get_world_status($world_status_data);
         $client->sendMessage($chat_id, $result, 'HTML', null, null, null, $menu);
@@ -107,72 +107,72 @@ if (isset($update->message) or isset($update->edited_message)) {
         return;
     }
 
-    if ($text === "Germany 🗓") {
+    if ($text === "🇩🇪 🗓") {
         country_history_wrapper('germany', 'DE', $client, $chat_id, $menu);
         return;
     }
 
-    if ($text === "Sweden 🗓") {
+    if ($text === "🇸🇪 🗓") {
         country_history_wrapper('sweden', 'SE', $client, $chat_id, $menu);
         return;
     }
 
-    if ($text === "Germany 🚑") {
+    if ($text === "🇩🇪 🚑") {
         country_status_wrapper('DE', 'germany', $client, $chat_id, $menu);
         return;
     }
 
-    if ($text === "Sweden 🚑") {
+    if ($text === "🇸🇪 🚑") {
         country_status_wrapper('SE', 'sweden', $client, $chat_id, $menu);
         return;
     }
 
-    if ($text === "USA 🚑") {
+    if ($text === "🇺🇸 🚑") {
         country_status_wrapper('US', 'united-states', $client, $chat_id, $menu);
         return;
     }
 
-    if ($text === "USA 🗓") {
+    if ($text === "🇺🇸 🗓") {
         country_history_wrapper('united-states', 'US', $client, $chat_id, $menu);
         return;
     }
 
-    if ($text === "Italy 🚑") {
+    if ($text === "🇮🇹 🚑") {
         country_status_wrapper('IT', 'italy', $client, $chat_id, $menu);
         return;
     }
 
-    if ($text === "Italy 🗓") {
+    if ($text === "🇮🇹 🗓") {
         country_history_wrapper('italy', 'IT', $client, $chat_id, $menu);
         return;
     }
 
-    if ($text === "Spain 🚑") {
+    if ($text === "🇪🇸 🚑") {
         country_status_wrapper('ES', 'spain', $client, $chat_id, $menu);
         return;
     }
 
-    if ($text === "Spain 🗓") {
+    if ($text === "🇪🇸 🗓") {
         country_history_wrapper('spain', 'ES', $client, $chat_id, $menu);
         return;
     }
 
-    if ($text === "Brazil 🚑") {
+    if ($text === "🇧🇷 🚑") {
         country_status_wrapper('BR', 'brazil', $client, $chat_id, $menu);
         return;
     }
 
-    if ($text === "Brazil 🗓") {
+    if ($text === "🇧🇷 🗓") {
         country_history_wrapper('brazil', 'BR', $client, $chat_id, $menu);
         return;
     }
 
-    if ($text === "Russia 🚑") {
+    if ($text === "🇷🇺 🚑") {
         country_status_wrapper('RU', 'russia', $client, $chat_id, $menu);
         return;
     }
 
-    if ($text === "Russia 🗓") {
+    if ($text === "🇷🇺 🗓") {
         country_history_wrapper('russia', 'RU', $client, $chat_id, $menu);
         return;
     }
@@ -184,7 +184,7 @@ if (isset($update->message) or isset($update->edited_message)) {
 function country_history_wrapper($country, $countrycode, $client, $chat_id, $menu)
 {
     $result = get_country_history($country, $countrycode, 30);
-    $client->sendMessage($chat_id, $result, 'HTML', null, null, null, $menu);
+    //$client->sendMessage($chat_id, $result, 'HTML', null, null, null, $menu);
     if (substr($result, 0, 6) != 'Sorry') {
         $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image.php?v=2&country=$country&date=" . date("y-m-d-H"), null, null, null, null, $menu);
     }
