@@ -99,9 +99,11 @@ Recovered:  <b>' . get_nice_number_textaligned($result['TotalRecovered']) . '</b
 
 }
 
-function get_world_status($world_status_data)
+function get_world_status()
 {
-    $result = $world_status_data;
+    $result = CallAPI("GET", API_URL . "/summary");
+
+    $result = json_decode($result, true);
 
     if ($result == NULL) {
         return 'Sorry, data is currently not available, but will return tomorrow (hopefully). 😐 ';
@@ -126,13 +128,4 @@ Recovered:  <b>' . get_nice_number_textaligned($result['Global']['TotalRecovered
 
     return $result;
 
-}
-
-function get_world_status_data()
-{
-    $result = CallAPI("GET", API_URL . "/summary");
-
-    $result = json_decode($result, true);
-
-    return $result;
 }
