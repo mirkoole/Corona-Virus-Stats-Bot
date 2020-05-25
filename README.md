@@ -10,7 +10,7 @@ Just say hi to [@CoronananaVirusBot](https://t.me/CoronananaVirusBot) via Telegr
 
 ## Screenshots
 
-Action Buttons | Charts | Stats 
+Action Buttons | Charts 
 :-:|:-:
 [![Screenshot](screenshots/screenshot1b.png)](https://t.me/CoronananaVirusBot)  |  [![Screenshot](screenshots/screenshot2b.png)](https://t.me/CoronananaVirusBot)
 
