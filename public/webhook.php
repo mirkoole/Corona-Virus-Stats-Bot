@@ -174,21 +174,21 @@ function country_wrapper($countrycode, $country, $client, $chat_id, $menu)
         sleep(2);
         $result = get_country_status($countrycode);
 
-        // send result or error message
-        $client->sendMessage($chat_id, $result, 'HTML', null, null, null, $menu);
-
-        // halt on error as charts would be broken
-        if (substr($result, 0, 5) == 'Sorry') return;
-
     }
 
-    // delay request
+    // send result
+    $client->sendMessage($chat_id, $result, 'HTML', null, null, null, $menu);
+
+    // halt on error as charts would be broken
+    if (substr($result, 0, 5) == 'Sorry') return;
+
+    // delay next request
     sleep(2);
 
     // image active
     $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image_active.php?v=2&country=$country&date=" . date("y-m-d-H"), null, null, null, null, $menu);
 
-    // delay request
+    // delay next request
     sleep(2);
 
     // image history
