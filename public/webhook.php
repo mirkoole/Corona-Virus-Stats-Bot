@@ -166,13 +166,20 @@ function country_wrapper($countrycode, $country, $client, $chat_id, $menu)
     // text stats
     $result = get_country_status($countrycode);
 
-    $client->sendMessage($chat_id, $result, 'HTML', null, null, null, $menu);
-
     // check if api results are correct
     // $result contains results or error msg
-    // print both to client, but halt on error
-    if (substr($result, 0, 6) == 'Sorry') {
-        return;
+    if (substr($result, 0, 5) == 'Sorry') {
+
+        // attempt one retry after delay
+        sleep(2);
+        $result = get_country_status($countrycode);
+
+        // send result or error message
+        $client->sendMessage($chat_id, $result, 'HTML', null, null, null, $menu);
+
+        // halt on error as charts would be broken
+        if (substr($result, 0, 5) == 'Sorry') return;
+
     }
 
     // delay request
