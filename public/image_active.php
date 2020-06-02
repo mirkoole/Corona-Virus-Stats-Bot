@@ -62,7 +62,7 @@ $gridWidth = $gridRight - $gridLeft;
 
 // Bar and line width
 $lineWidth = 1;
-$barWidth = 10;
+$barWidth = 2;
 
 // Font settings
 #$font = '/System/Library/Fonts/Supplemental/Verdana.ttf';
@@ -148,9 +148,10 @@ foreach ($data as $key => $value) {
     $x2 = $itemX + $barWidth / 2;
     $y2 = $gridBottom - 1;
 
+    // sort by: death, active, recovered
+    imagefilledrectangle($chart, $x1, $y1_recovered, $x2, $y2, $barColor_blue);
     imagefilledrectangle($chart, $x1, $y1, $x2, $y2, $barColor_red);
-    imagefilledrectangle($chart, $x1 + 15, $y1_death, $x2 + 15, $y2, $barColor_black);
-    imagefilledrectangle($chart, $x1 + 30, $y1_recovered, $x2 + 30, $y2, $barColor_blue);
+    imagefilledrectangle($chart, $x1, $y1_death, $x2, $y2, $barColor_black);
 
     // Draw the label
     $labelBox = imagettfbbox($fontSize, 0, $font, $key);
