@@ -148,9 +148,15 @@ foreach ($data as $key => $value) {
     $x2 = $itemX + $barWidth / 2;
     $y2 = $gridBottom - 1;
 
-    // sort by: death, active, recovered
-    imagefilledrectangle($chart, $x1, $y1_recovered, $x2, $y2, $barColor_blue);
-    imagefilledrectangle($chart, $x1, $y1, $x2, $y2, $barColor_red);
+    // "sort" bars
+    if ($y1 < $y1_recovered) {
+        imagefilledrectangle($chart, $x1, $y1, $x2, $y2, $barColor_red);
+        imagefilledrectangle($chart, $x1, $y1_recovered, $x2, $y2, $barColor_blue);
+    } else {
+        imagefilledrectangle($chart, $x1, $y1_recovered, $x2, $y2, $barColor_blue);
+        imagefilledrectangle($chart, $x1, $y1, $x2, $y2, $barColor_red);
+    }
+
     imagefilledrectangle($chart, $x1, $y1_death, $x2, $y2, $barColor_black);
 
     // Draw the label
