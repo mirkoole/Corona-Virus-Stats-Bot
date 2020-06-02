@@ -187,13 +187,13 @@ function country_wrapper($countrycode, $country, $client, $chat_id, $menu)
     sleep(2);
 
     // image active
-    $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image_active.php?v=2&country=$country&date=" . date("y-m-d-H"), null, null, null, null, $menu);
+    $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image_active.php?v=3&country=$country&date=" . date("y-m-d-H"), null, null, null, null, $menu);
 
 
     // delay next request
     sleep(2);
 
     // image history
-    $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image.php?v=2&country=$country&date=" . date("y-m-d-H"), null, null, null, null, $menu);
+    $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image.php?v=3&country=$country&date=" . date("y-m-d-H"), null, null, null, null, $menu);
 
 }
