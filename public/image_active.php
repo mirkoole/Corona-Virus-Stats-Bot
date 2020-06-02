@@ -18,6 +18,8 @@ $country = ucwords($country);
 
 $result = json_decode($result, true);
 
+if(empty($result)) exit('Error: no data');
+
 $data = array();
 
 $max = 100;
@@ -78,8 +80,11 @@ $yLabelSpan = 5000;
 // Max value on y-axis
 $yMaxValue = $max + $yLabelSpan;
 
+
 // Max value on y-axis
-$yMaxValue = round($max * 1.1, -4);
+if($yMaxValue > 10000) {
+    $yMaxValue = round($max * 1.1, -4);
+}
 
 // Distance between grid lines on y-axis
 $yLabelSpan = round($max * 0.1, -3);
