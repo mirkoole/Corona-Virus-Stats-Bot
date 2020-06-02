@@ -7,8 +7,13 @@ include 'restapi.php';
 /*
  * Chart data
  */
-$country = $_GET['country'];
-$result = CallAPI("GET", "https://api.covid19api.com/live/country/$country");
+if (!isset($_GET['country'])) {
+    $country = 'germany';
+} else {
+    $country = $_GET['country'];
+}
+
+$result = CallAPI("GET", API_URL . "/total/dayone/country/$country");
 $country = ucwords($country);
 
 $result = json_decode($result, true);
@@ -26,13 +31,16 @@ foreach ($result as $e) {
     $value_d = (int)$e['Deaths'];
     $value_r = (int)$e['Recovered'];
 
-    $data[$key]['Active'] = $value;
-    $data[$key]['Deaths'] = $value_d;
-    $data[$key]['Recovered'] = $value_r;
+    // improves chart readability
+    if (($value + $value_d + $value_r) > 100) {
+        $data[$key]['Active'] = $value;
+        $data[$key]['Deaths'] = $value_d;
+        $data[$key]['Recovered'] = $value_r;
 
-    // calc max death
-    $max = max($max, $value, $value_d);
-    #$max = max($max, $value, $value_d, $value_r);
+        // calc max val
+        $max = max($max, $value, $value_d, $value_r);
+
+    }
 
 }
 
@@ -141,8 +149,8 @@ foreach ($data as $key => $value) {
     $y2 = $gridBottom - 1;
 
     imagefilledrectangle($chart, $x1, $y1, $x2, $y2, $barColor_red);
-    imagefilledrectangle($chart, $x1+15, $y1_death, $x2+15, $y2, $barColor_black);
-    #imagefilledrectangle($chart, $x1+30, $y1_recovered, $x2+30, $y2, $barColor_blue);
+    imagefilledrectangle($chart, $x1 + 15, $y1_death, $x2 + 15, $y2, $barColor_black);
+    imagefilledrectangle($chart, $x1 + 30, $y1_recovered, $x2 + 30, $y2, $barColor_blue);
 
     // Draw the label
     $labelBox = imagettfbbox($fontSize, 0, $font, $key);
@@ -164,8 +172,9 @@ foreach ($data as $key => $value) {
 
 imagettftext($chart, 14, 0, 190, 30, $labelColor, $font, "COVID-19 Active Infections & Deaths $country");
 imagettftext($chart, 7, 0, 250, 45, $labelColor, $font, "via Telegram Bot @CoronananaVirusBot powered by covid19api.com");
-imagettftext($chart, 11, 0, 290, 70, $barColor_red, $font, "Active = RED");
-imagettftext($chart, 11, 0, 410, 70, $barColor_black, $font, "Death = BLACK");
+imagettftext($chart, 11, 0, 200, 70, $barColor_red, $font, "Active = RED");
+imagettftext($chart, 11, 0, 350, 70, $barColor_black, $font, "Death = BLACK");
+imagettftext($chart, 11, 0, 500, 70, $barColor_blue, $font, "Recovered = BLUE");
 
 /*
  * Output image to browser

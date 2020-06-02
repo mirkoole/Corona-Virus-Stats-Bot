@@ -7,9 +7,13 @@ include 'restapi.php';
 /*
  * Chart data
  */
+if (!isset($_GET['country'])) {
+    $country = 'germany';
+} else {
+    $country = $_GET['country'];
+}
 
-$country = $_GET['country'];
-$result = CallAPI("GET", "https://api.covid19api.com/total/dayone/country/$country/status/confirmed");
+$result = CallAPI("GET", API_URL . "/total/dayone/country/$country/status/confirmed");
 $country = ucwords($country);
 
 $result = json_decode($result, true);
@@ -25,7 +29,7 @@ foreach ($result as $e) {
     $key = $date;
     $value = (int)$e['Cases'];
 
-    // this removes Jan-Feb 2020 from the chart
+    // this removes Jan-Feb 2020 from the chart bc 'Cases' can only grow
     if ($value > 100) {
         $data[$key] = $value;
         $max = max($max, $value);

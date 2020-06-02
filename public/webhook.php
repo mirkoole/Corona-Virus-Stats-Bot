@@ -182,11 +182,13 @@ function country_wrapper($countrycode, $country, $client, $chat_id, $menu)
     // halt on error as charts would be broken
     if (substr($result, 0, 5) == 'Sorry') return;
 
+
     // delay next request
     sleep(2);
 
     // image active
     $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image_active.php?v=2&country=$country&date=" . date("y-m-d-H"), null, null, null, null, $menu);
+
 
     // delay next request
     sleep(2);
