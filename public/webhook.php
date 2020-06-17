@@ -74,6 +74,17 @@ if (isset($update->message) or isset($update->edited_message)) {
                 "text" => "🇷🇺",
             ],
         ],
+        [
+            [
+                "text" => "🇰🇷",
+            ],
+            [
+                "text" => "🇦🇺",
+            ],
+            [
+                "text" => "🇳🇿",
+            ],
+        ],
     ];
 
     if (LOGGING_ENABLED) {
@@ -150,6 +161,21 @@ if (isset($update->message) or isset($update->edited_message)) {
 
     if ($text === "🇯🇵") {
         country_wrapper('JP', 'japan', $client, $chat_id, $menu);
+        return;
+    }
+
+    if ($text === "🇰🇷") {
+        country_wrapper('KR', 'korea-south', $client, $chat_id, $menu);
+        return;
+    }
+
+    if ($text === "🇦🇺") {
+        country_wrapper('AU', 'australia', $client, $chat_id, $menu);
+        return;
+    }
+
+    if ($text === "🇳🇿") {
+        country_wrapper('NZ', 'new-zealand', $client, $chat_id, $menu);
         return;
     }
 
