@@ -18,7 +18,7 @@ $country = ucwords($country);
 
 $result = json_decode($result, true);
 
-if(empty($result)) exit('Error: no data');
+if (empty($result)) exit('Error: no data');
 
 $data = array();
 
@@ -82,7 +82,7 @@ $yMaxValue = $max + $yLabelSpan;
 
 
 // Max value on y-axis
-if($yMaxValue > 10000) {
+if ($yMaxValue > 10000) {
     $yMaxValue = round($max * 1.1, -4);
 }
 
@@ -182,7 +182,7 @@ foreach ($data as $key => $value) {
     $i++;
 }
 
-imagettftext($chart, 14, 0, 190, 30, $labelColor, $font, "COVID-19 Active Infections & Deaths $country");
+imagettftext($chart, 14, 0, 250, 30, $labelColor, $font, "COVID-19 Cases " . ucwords($country, "-"));
 imagettftext($chart, 7, 0, 250, 45, $labelColor, $font, "via Telegram Bot @CoronananaVirusBot powered by covid19api.com");
 imagettftext($chart, 11, 0, 200, 70, $barColor_red, $font, "Active = RED");
 imagettftext($chart, 11, 0, 350, 70, $barColor_black, $font, "Death = BLACK");
