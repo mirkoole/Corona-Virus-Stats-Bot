@@ -162,7 +162,13 @@ foreach ($data as $key => $value) {
         imagefilledrectangle($chart, $x1, $y1, $x2, $y2, $barColor_red);
     }
 
-    imagefilledrectangle($chart, $x1, $y1_death, $x2, $y2, $barColor_black);
+    if($y1 < $y1_death) {
+        imagefilledrectangle($chart, $x1, $y1_death, $x2, $y2, $barColor_black);
+    } else {
+        imagefilledrectangle($chart, $x1, $y1_death, $x2, $y2, $barColor_black);
+        imagefilledrectangle($chart, $x1, $y1, $x2, $y2, $barColor_red);
+    }
+
 
     // Draw the label
     $labelBox = imagettfbbox($fontSize, 0, $font, $key);
