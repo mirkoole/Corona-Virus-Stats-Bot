@@ -212,9 +212,9 @@ function country_wrapper($countrycode, $country, $client, $chat_id, $menu)
 
     // image active
     if ($country == "china") {
-        $client->sendMessage($chat_id, "Error: Data from China is corrupted. What a surprise.", 'HTML', null, null, null, $menu);
+        $client->sendMessage($chat_id, "Error: Data from China is corrupted. What a surprise.", 'HTML', null, null, null, null);
     } else {
-        $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image_active.php?v=4&country=$country&date=" . date("y-m-d-H"), null, null, null, null, $menu);
+        $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image_active.php?v=4&country=$country&date=" . date("y-m-d-H"), null, null, null, null, null);
     }
 
 
