@@ -77,6 +77,7 @@ function get_country_status($countryCode = 'DE')
     $result = $result['Countries'][$countryID];
 
     $date = parse_date($result['Date']);
+    $result['TotalActive'] = $result['TotalConfirmed'] - $result['TotalRecovered'] - $result['TotalDeaths'];
 
     $result = $result['Country'] . ' Corona Infections ' . flagMaster::emojiFlag($result['CountryCode']) . '
 
@@ -87,9 +88,10 @@ New Recovered:  <b>' . get_nice_number_textaligned($result['NewRecovered']) . '<
 </pre>
 
 <b>Total</b> 📈 <pre>
-Infections: <b>' . get_nice_number_textaligned($result['TotalConfirmed']) . '</b>
+Active:     <b>' . get_nice_number_textaligned($result['TotalActive']) . '</b>
 Deaths:     <b>' . get_nice_number_textaligned($result['TotalDeaths']) . '</b>
 Recovered:  <b>' . get_nice_number_textaligned($result['TotalRecovered']) . '</b>
+Infections: <b>' . get_nice_number_textaligned($result['TotalConfirmed']) . '</b>
 </pre>
 ' . $date;
 
@@ -108,6 +110,7 @@ function get_world_status()
     }
 
     $date = parse_date($result['Date']);
+    $result['Global']['TotalActive'] = $result['Global']['TotalConfirmed'] - $result['Global']['TotalRecovered'] - $result['Global']['TotalDeaths'];
 
     $result = 'Worldwide Corona Infections 🌎🌍🌏
 
@@ -117,12 +120,12 @@ New Deaths:     <b>' . get_nice_number_textaligned($result['Global']['NewDeaths'
 New Recovered:  <b>' . get_nice_number_textaligned($result['Global']['NewRecovered']) . '</b></pre>
 
 <b>Total</b> 📈 <pre>
-Infections: <b>' . get_nice_number_textaligned($result['Global']['TotalConfirmed']) . '</b>
 Deaths:     <b>' . get_nice_number_textaligned($result['Global']['TotalDeaths']) . '</b>
+Active:     <b>' . get_nice_number_textaligned($result['Global']['TotalActive']) . '</b>
 Recovered:  <b>' . get_nice_number_textaligned($result['Global']['TotalRecovered']) . '</b>
+Infections: <b>' . get_nice_number_textaligned($result['Global']['TotalConfirmed']) . '</b>
 </pre>
 ' . $date;
-
 
     return $result;
 
