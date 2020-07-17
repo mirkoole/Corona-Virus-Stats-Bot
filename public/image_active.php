@@ -66,7 +66,7 @@ $gridWidth = $gridRight - $gridLeft;
 
 // Bar and line width
 $lineWidth = 1;
-$barWidth = 2;
+$barWidth = 10;
 
 // Font settings
 #$font = '/System/Library/Fonts/Supplemental/Verdana.ttf';
