@@ -14,3 +14,6 @@ $db = new mysqli(MYSQLI_HOST, MYSQLI_USER, MYSQLI_PASSWORD, MYSQLI_DATABASE);
 
 // emoji support
 $db->set_charset('utf8mb4');
+
+// max exec time php
+set_time_limit(30);
