@@ -18,7 +18,7 @@ function parse_date($date)
 
     $date_unix = mktime($date->format("H"), $date->format("i"), 0, $date->format("m"), $date->format("d"), $date->format("Y"));
 
-    $date_unix += 60 * 120; // add 2h for timezone difference
+    $date_unix += 60 * 60; // add 1h for timezone difference
     $diff = time() - $date_unix;
     $min_ago = (int)($diff / 60);
 
