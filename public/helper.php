@@ -16,10 +16,12 @@ function parse_date($date)
     $date = DateTime::createFromFormat('Y-m-d\TH:i:s+', $date);
     $date_utc = $date->format('H:i - d.m.Y') . ' (UTC)';
 
+    // calc timezone difference
     $date_unix = mktime($date->format("H"), $date->format("i"), 0, $date->format("m"), $date->format("d"), $date->format("Y"));
-
-    $date_unix += 60 * 60; // add 1h for timezone difference
+    $now = new DateTime('now', new DateTimeZone('Europe/Berlin'));
+    $date_unix += $now->getOffset();
     $diff = time() - $date_unix;
+
     $min_ago = (int)($diff / 60);
 
     return 'Last Update: <i>' . $min_ago . ' min ago</i>' . PHP_EOL . '<i>' . $date_utc . '</i>';
