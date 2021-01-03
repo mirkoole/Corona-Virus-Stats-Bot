@@ -54,11 +54,11 @@ foreach ($result as $e) {
 
 // Image dimensions
 $imageWidth = 1280;
-$imageHeight = 1920;
+$imageHeight = 1720;
 
 // Grid dimensions and placement within image
 $gridTop = 50;
-$gridLeft = 50 + 50;
+$gridLeft = 50 + 50 + 50;
 $gridBottom = $imageHeight - 50;
 $gridRight = $imageWidth - 50;
 $gridHeight = $gridBottom - $gridTop;
@@ -71,7 +71,9 @@ $barWidth = 10;
 // Font settings
 #$font = '/System/Library/Fonts/Supplemental/Verdana.ttf';
 $font = __DIR__ . '/fonts/Verdana.ttf';
-$fontSize = 10;
+$fontSizeLabels = 12;
+$fontSizeX = 20;
+$fontSizeY = 20;
 
 // Margin between label and axis
 $labelMargin = 12;
@@ -88,7 +90,7 @@ if ($yMaxValue > 10000) {
     $yMaxValue = round($max * 1.1, -3);
 
     // Distance between grid lines on y-axis
-    $yLabelSpan = round($max * 0.05, -4);
+    $yLabelSpan = round($max * 0.06, -4);
 } else {
     // Distance between grid lines on y-axis
     $yLabelSpan = round($max * 0.1, -3);
@@ -122,13 +124,13 @@ for ($i = 0; $i <= $yMaxValue; $i += $yLabelSpan) {
     imageline($chart, $gridLeft, $y, $gridRight, $y, $gridColor);
 
     // draw right aligned label
-    $labelBox = imagettfbbox($fontSize, 0, $font, strval($i));
+    $labelBox = imagettfbbox($fontSizeY, 0, $font, strval($i));
     $labelWidth = $labelBox[4] - $labelBox[0];
 
     $labelX = $gridLeft - $labelWidth - $labelMargin;
-    $labelY = $y + $fontSize / 2;
+    $labelY = $y + $fontSizeY / 2;
 
-    imagettftext($chart, $fontSize, 0, $labelX, $labelY, $labelColor, $font, get_nice_number($i));
+    imagettftext($chart, $fontSizeY, 0, $labelX, $labelY, $labelColor, $font, get_nice_number($i));
 }
 
 /*
@@ -145,9 +147,9 @@ imageline($chart, $gridLeft, $gridBottom, $gridRight, $gridBottom, $axisColor);
 $barSpacing = $gridWidth / count($data);
 $itemX = $gridLeft + $barSpacing / 2;
 
-$m = round(sizeof($data) / CHART_LABEL_COUNT);
-$i = 0;
-$l = 0;
+#$m = round(sizeof($data) / CHART_LABEL_COUNT);
+#$i = 0;
+#$l = 0;
 foreach ($data as $key => $value) {
 
     // Draw the bar
@@ -179,21 +181,27 @@ foreach ($data as $key => $value) {
 
 
     // Draw the label
-    $labelBox = imagettfbbox($fontSize, 0, $font, $key);
+    $labelBox = imagettfbbox($fontSizeX, 0, $font, $key);
     $labelWidth = $labelBox[4] - $labelBox[0];
 
     $labelX = $itemX - $labelWidth / 2;
-    $labelY = $gridBottom + $labelMargin + $fontSize;
+    $labelY = $gridBottom + $labelMargin + $fontSizeX;
 
+    /*
     if ($i % $m == 0) {
-        #if ($l % 2 != 0) $labelY += 15;
+        if ($l % 2 != 0) $labelY += 15;
         $l++;
-        imagettftext($chart, $fontSize, 0, $labelX, $labelY, $labelColor, $font, $key);
+        imagettftext($chart, $fontSizeX, 0, $labelX, $labelY, $labelColor, $font, $key);
+    }
+    */
+
+    if (substr($key, "0", "2") == "1.") {
+        imagettftext($chart, $fontSizeX, 0, $labelX, $labelY, $labelColor, $font, $key);
     }
 
     $itemX += $barSpacing;
 
-    $i++;
+    #$i++;
 }
 
 imagettftext($chart, 30, 0, 350, 40, $labelColor, $font, "COVID-19 Cases " . ucwords($country, "-"));
