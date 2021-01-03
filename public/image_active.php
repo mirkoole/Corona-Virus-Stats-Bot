@@ -54,7 +54,7 @@ foreach ($result as $e) {
 
 // Image dimensions
 $imageWidth = 1280;
-$imageHeight = 720;
+$imageHeight = 1920;
 
 // Grid dimensions and placement within image
 $gridTop = 50;
@@ -85,16 +85,15 @@ $yMaxValue = $max + $yLabelSpan;
 
 // Max value on y-axis
 if ($yMaxValue > 10000) {
-    $yMaxValue = round($max * 1.1, -4);
+    $yMaxValue = round($max * 1.1, -3);
 
     // Distance between grid lines on y-axis
-    $yLabelSpan = round($max * 0.1, -4);
+    $yLabelSpan = round($max * 0.05, -4);
 } else {
     // Distance between grid lines on y-axis
     $yLabelSpan = round($max * 0.1, -3);
 
 }
-
 
 // Init image
 $chart = imagecreate($imageWidth, $imageHeight);
@@ -197,10 +196,10 @@ foreach ($data as $key => $value) {
     $i++;
 }
 
-imagettftext($chart, 14, 0, 450, 30, $labelColor, $font, "COVID-19 Cases " . ucwords($country, "-"));
-imagettftext($chart, 7, 0, 450, 45, $labelColor, $font, "via Telegram Bot @CoronananaVirusBot powered by covid19api.com");
-imagettftext($chart, 11, 0, 450, 70, $barColor_red, $font, "Active = RED");
-imagettftext($chart, 11, 0, 600, 70, $barColor_black, $font, "Death = BLACK");
+imagettftext($chart, 30, 0, 350, 40, $labelColor, $font, "COVID-19 Cases " . ucwords($country, "-"));
+imagettftext($chart, 14, 0, 300, 70, $labelColor, $font, "via Telegram Bot @CoronananaVirusBot powered by covid19api.com");
+imagettftext($chart, 20, 0, 400, 110, $barColor_red, $font, "Active = RED");
+imagettftext($chart, 20, 0, 600, 110, $barColor_black, $font, "Death = BLACK");
 //imagettftext($chart, 11, 0, 500, 70, $barColor_blue, $font, "Recovered = BLUE");
 
 /*
