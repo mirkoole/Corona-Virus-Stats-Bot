@@ -2,6 +2,11 @@
 
 use peterkahl\flagMaster\flagMaster;
 
+function get_my_error_message()
+{
+    return 'Sorry, data is currently not available, but will return later. 😐 This problem is currently caused by our data provider. They are already working on a solution.';
+}
+
 function get_country_history($country = 'germany', $countrycode = 'DE', $history = 30)
 {
 
@@ -12,7 +17,7 @@ function get_country_history($country = 'germany', $countrycode = 'DE', $history
     var_dump($result);
 
     if ($result == NULL) {
-        return 'Sorry, data is currently not available, but will return tomorrow (hopefully). 😐 ';
+        return get_my_error_message();
     }
 
     $message = 'Last 30 Days of ' . $country . ' ' . flagMaster::emojiFlag($countrycode) . ' ' . PHP_EOL . PHP_EOL . '<b>Date - Infections Total</b>' . PHP_EOL . '<pre>';
@@ -38,7 +43,7 @@ function get_country_history_table($country = 'germany', $history = 30)
     $result = json_decode($result, true);
 
     if ($result == NULL) {
-        return 'Sorry, data is currently not available, but will return tomorrow (hopefully). 😐 ';
+        return get_my_error_message();
     }
 
     $message = 'Last 30 Days of Germany 🇩🇪 (Table Beta)' . PHP_EOL . PHP_EOL . '<b>Date - Infections Total</b>' . PHP_EOL . '';
@@ -65,13 +70,13 @@ function get_country_status($countryCode = 'DE')
     $result = json_decode($result, true);
 
     if ($result == NULL) {
-        return 'Sorry, data is currently not available, but will return tomorrow (hopefully). 😐 ';
+        return get_my_error_message();
     }
 
     $countryID = search_for_id($countryCode, $result['Countries']);
 
     if ($countryID == NULL) {
-        return 'Sorry, data is currently not available, but will return tomorrow (hopefully). 😐 ';
+        return get_my_error_message();
     }
 
     $result = $result['Countries'][$countryID];
@@ -106,7 +111,7 @@ function get_world_status()
     $result = json_decode($result, true);
 
     if ($result == NULL) {
-        return 'Sorry, data is currently not available, but will return tomorrow (hopefully). 😐 ';
+        return get_my_error_message();
     }
 
     $date = parse_date($result['Date']);
