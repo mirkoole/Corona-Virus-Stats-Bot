@@ -96,6 +96,17 @@ if (isset($update->message) or isset($update->edited_message)) {
                 "text" => "🇳🇱",
             ],
         ],
+        [
+            [
+                "text" => "🇮🇱",
+            ],
+            [
+                "text" => "🇮🇳",
+            ],
+            [
+                "text" => "🇵🇱",
+            ],
+        ],
     ];
 
     if (LOGGING_ENABLED) {
@@ -110,6 +121,7 @@ if (isset($update->message) or isset($update->edited_message)) {
 
     if ($text === "🌎🌍🌏" || $text === "🌎" || $text === "🌍" || $text === "🌏") {
         $client->sendMessage($chat_id, get_world_status(), 'HTML', null, null, null, $menu);
+        //$client->sendMessage($chat_id, get_my_error_message_no_data(), 'HTML', null, null, null, $menu);
         return;
     }
 
@@ -205,6 +217,21 @@ if (isset($update->message) or isset($update->edited_message)) {
         return;
     }
 
+    if ($text === "🇮🇱") {
+        country_wrapper('IL', 'israel', $client, $chat_id, $menu);
+        return;
+    }
+
+    if ($text === "🇮🇳") {
+        country_wrapper('IN', 'india', $client, $chat_id, $menu);
+        return;
+    }
+
+    if ($text === "🇵🇱") {
+        country_wrapper('PL', 'poland', $client, $chat_id, $menu);
+        return;
+    }
+
     // received invalid / old command, show help / new menu:
     $client->sendMessage($chat_id, "Press a button to use me. 😏", null, null, null, null, $menu);
 
@@ -237,7 +264,7 @@ function country_wrapper($countrycode, $country, $client, $chat_id, $menu)
     sleep(1);
 
     // image active
-    $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image_active.php?v=8&country=$country&date=" . date("y-m-d-H"), null, null, null, null, null);
+    $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image_active.php?v=9&country=$country&date=" . date("y-m-d-H"), null, null, null, null, null);
 
 
     // delay next request
@@ -245,5 +272,8 @@ function country_wrapper($countrycode, $country, $client, $chat_id, $menu)
 
     // image history
     #$client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image.php?v=3&country=$country&date=" . date("y-m-d-H"), null, null, null, null, $menu);
+
+    // show error: outdated data
+    //$client->sendMessage($chat_id, get_my_error_message_no_data(), 'HTML', null, null, null, $menu);
 
 }
