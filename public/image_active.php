@@ -197,6 +197,7 @@ foreach ($data as $key => $value) {
 
     if (substr($key, "0", "2") == "1.") {
         imagettftext($chart, $fontSizeX, 0, $labelX, $labelY, $labelColor, $font, $key);
+        #imageline($chart, $labelX+25, $labelY-20, $labelX+25, 150, $gridColor);
     }
 
     $itemX += $barSpacing;
