@@ -7,6 +7,11 @@ function get_my_error_message()
     return 'Sorry, data is currently not available, but will return later. 😐 This problem is currently caused by our data provider. They are already working on a solution.';
 }
 
+function get_my_error_message_no_data()
+{
+    return 'Sorry, the data is currently outdated. 😐 This problem is caused by our data provider. They are already working on a solution.';
+}
+
 function get_country_history($country = 'germany', $countrycode = 'DE', $history = 30)
 {
 
