@@ -40,49 +40,36 @@ if (isset($update->message) or isset($update->edited_message)) {
             [
                 "text" => "🇫🇷",
             ],
+            [
+                "text" => "🇵🇱",
+            ],
         ],
         [
-            [
-                "text" => "🇸🇪",
-            ],
             [
                 "text" => "🇮🇹",
             ],
             [
                 "text" => "🇪🇸",
             ],
-        ],
-        [
             [
-                "text" => "🇧🇷",
+                "text" => "🇵🇹",
             ],
             [
-                "text" => "🇺🇸",
-            ],
-            [
-                "text" => "🇬🇧",
+                "text" => "🇬🇷",
             ],
         ],
         [
             [
-                "text" => "🇨🇳",
+                "text" => "🇳🇴",
             ],
             [
-                "text" => "🇯🇵",
+                "text" => "🇸🇪",
             ],
             [
-                "text" => "🇷🇺",
-            ],
-        ],
-        [
-            [
-                "text" => "🇰🇷",
+                "text" => "🇫🇮",
             ],
             [
-                "text" => "🇦🇺",
-            ],
-            [
-                "text" => "🇳🇿",
+                "text" => "🇩🇰",
             ],
         ],
         [
@@ -95,29 +82,53 @@ if (isset($update->message) or isset($update->edited_message)) {
             [
                 "text" => "🇳🇱",
             ],
+            [
+                "text" => "🇧🇪",
+            ],
         ],
         [
+            [
+                "text" => "🇬🇧",
+            ],
+            [
+                "text" => "🇧🇷",
+            ],
+            [
+                "text" => "🇺🇸",
+            ],
+            [
+                "text" => "🇷🇺",
+            ],
+        ],
+        [
+            [
+                "text" => "🇨🇳",
+            ],
+            [
+                "text" => "🇯🇵",
+            ],
+            [
+                "text" => "🇰🇷",
+            ],
+            [
+                "text" => "🇮🇩",
+            ],
+        ],
+        [
+            [
+                "text" => "🇦🇺",
+            ],
+            [
+                "text" => "🇳🇿",
+            ],
             [
                 "text" => "🇮🇱",
             ],
             [
                 "text" => "🇮🇳",
             ],
-            [
-                "text" => "🇵🇱",
-            ],
         ],
-        [
-            [
-                "text" => "🇵🇹",
-            ],
-            [
-                "text" => "🇳🇴",
-            ],
-            [
-                "text" => "🇫🇮",
-            ],
-        ],
+
     ];
 
     if (LOGGING_ENABLED) {
@@ -257,6 +268,27 @@ if (isset($update->message) or isset($update->edited_message)) {
         country_wrapper('FI', 'finland', $client, $chat_id, $menu);
         return;
     }
+
+    if ($text === "🇩🇰") {
+        country_wrapper('DK', 'denmark', $client, $chat_id, $menu);
+        return;
+    }
+
+    if ($text === "🇬🇷") {
+        country_wrapper('GR', 'greece', $client, $chat_id, $menu);
+        return;
+    }
+
+    if ($text === "🇧🇪") {
+        country_wrapper('BE', 'belgium', $client, $chat_id, $menu);
+        return;
+    }
+
+    if ($text === "🇮🇩") {
+        country_wrapper('ID', 'indonesia', $client, $chat_id, $menu);
+        return;
+    }
+    
 
     // received invalid / old command, show help / new menu:
     $client->sendMessage($chat_id, "Press a button to use me. 😏", null, null, null, null, $menu);
