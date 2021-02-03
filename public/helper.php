@@ -2,7 +2,7 @@
 
 function get_nice_number_textaligned($number)
 {
-    return sprintf("%10s", get_nice_number($number));
+    return sprintf("%11s", get_nice_number($number));
 }
 
 function get_nice_number($number)
