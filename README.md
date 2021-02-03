@@ -12,7 +12,7 @@ Just say hi to [@CoronananaVirusBot](https://t.me/CoronananaVirusBot) via Telegr
 
 Action Buttons | Charts 
 :-:|:-:
-[![Screenshot](screenshots/screenshot1b.png)](https://t.me/CoronananaVirusBot)  |  [![Screenshot](screenshots/screenshot2b.png)](https://t.me/CoronananaVirusBot)
+[![Screenshot](screenshots/screenshot1c.png)](https://t.me/CoronananaVirusBot)  |  [![Screenshot](screenshots/screenshot2c.png)](https://t.me/CoronananaVirusBot)
 
 
 ## Setup
