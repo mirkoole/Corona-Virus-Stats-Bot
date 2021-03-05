@@ -154,141 +154,40 @@ if (isset($update->message) or isset($update->edited_message)) {
         return;
     }
 
-    if ($text === "🇩🇪") {
-        country_wrapper('DE', 'germany', $client, $chat_id, $menu);
+    $countrys = array(
+        "🇩🇪" => array('DE', 'germany'),
+        '🇫🇷' => array('FR', 'france'),
+        '🇬🇧' => array('GB', 'united-kingdom'),
+        '🇸🇪' => array('SE', 'sweden'),
+        '🇺🇸' => array('US', 'united-states'),
+        '🇮🇹' => array('IT', 'italy'),
+        '🇪🇸' => array('ES', 'spain'),
+        '🇧🇷' => array('BR', 'brazil'),
+        '🇷🇺' => array('RU', 'russia'),
+        '🇨🇳' => array('CN', 'china'),
+        '🇯🇵' => array('JP', 'japan'),
+        '🇰🇷' => array('KR', 'korea-south'),
+        '🇦🇺' => array('AU', 'australia'),
+        '🇳🇿' => array('NZ', 'new-zealand'),
+        '🇦🇹' => array('AT', 'austria'),
+        '🇨🇭' => array('CH', 'switzerland'),
+        '🇳🇱' => array('NL', 'netherlands'),
+        '🇮🇱' => array('IL', 'israel'),
+        '🇮🇳' => array('IN', 'india'),
+        '🇵🇱' => array('PL', 'poland'),
+        '🇵🇹' => array('PT', 'portugal'),
+        '🇳🇴' => array('NO', 'norway'),
+        '🇫🇮' => array('FI', 'finland'),
+        '🇩🇰' => array('DK', 'denmark'),
+        '🇬🇷' => array('GR', 'greece'),
+        '🇧🇪' => array('BE', 'belgium'),
+        '🇮🇩' => array('ID', 'indonesia'),
+    );
+
+    if (array_key_exists($text, $countrys)) {
+        country_wrapper($countrys[$text][0], $countrys[$text][1], $client, $chat_id, $menu);
         return;
     }
-
-    if ($text === "🇫🇷") {
-        country_wrapper('FR', 'france', $client, $chat_id, $menu);
-        return;
-    }
-
-    if ($text === "🇬🇧") {
-        country_wrapper('GB', 'united-kingdom', $client, $chat_id, $menu);
-        return;
-    }
-
-    if ($text === "🇸🇪") {
-        country_wrapper('SE', 'sweden', $client, $chat_id, $menu);
-        return;
-    }
-
-    if ($text === "🇺🇸") {
-        country_wrapper('US', 'united-states', $client, $chat_id, $menu);
-        return;
-    }
-
-    if ($text === "🇮🇹") {
-        country_wrapper('IT', 'italy', $client, $chat_id, $menu);
-        return;
-    }
-
-    if ($text === "🇪🇸") {
-        country_wrapper('ES', 'spain', $client, $chat_id, $menu);
-        return;
-    }
-
-    if ($text === "🇧🇷") {
-        country_wrapper('BR', 'brazil', $client, $chat_id, $menu);
-        return;
-    }
-
-    if ($text === "🇷🇺") {
-        country_wrapper('RU', 'russia', $client, $chat_id, $menu);
-        return;
-    }
-
-    if ($text === "🇨🇳") {
-        country_wrapper('CN', 'china', $client, $chat_id, $menu);
-        return;
-    }
-
-    if ($text === "🇯🇵") {
-        country_wrapper('JP', 'japan', $client, $chat_id, $menu);
-        return;
-    }
-
-    if ($text === "🇰🇷") {
-        country_wrapper('KR', 'korea-south', $client, $chat_id, $menu);
-        return;
-    }
-
-    if ($text === "🇦🇺") {
-        country_wrapper('AU', 'australia', $client, $chat_id, $menu);
-        return;
-    }
-
-    if ($text === "🇳🇿") {
-        country_wrapper('NZ', 'new-zealand', $client, $chat_id, $menu);
-        return;
-    }
-
-    if ($text === "🇦🇹") {
-        country_wrapper('AT', 'austria', $client, $chat_id, $menu);
-        return;
-    }
-
-    if ($text === "🇨🇭") {
-        country_wrapper('CH', 'switzerland', $client, $chat_id, $menu);
-        return;
-    }
-
-    if ($text === "🇳🇱") {
-        country_wrapper('NL', 'netherlands', $client, $chat_id, $menu);
-        return;
-    }
-
-    if ($text === "🇮🇱") {
-        country_wrapper('IL', 'israel', $client, $chat_id, $menu);
-        return;
-    }
-
-    if ($text === "🇮🇳") {
-        country_wrapper('IN', 'india', $client, $chat_id, $menu);
-        return;
-    }
-
-    if ($text === "🇵🇱") {
-        country_wrapper('PL', 'poland', $client, $chat_id, $menu);
-        return;
-    }
-
-    if ($text === "🇵🇹") {
-        country_wrapper('PT', 'portugal', $client, $chat_id, $menu);
-        return;
-    }
-
-    if ($text === "🇳🇴") {
-        country_wrapper('NO', 'norway', $client, $chat_id, $menu);
-        return;
-    }
-
-    if ($text === "🇫🇮") {
-        country_wrapper('FI', 'finland', $client, $chat_id, $menu);
-        return;
-    }
-
-    if ($text === "🇩🇰") {
-        country_wrapper('DK', 'denmark', $client, $chat_id, $menu);
-        return;
-    }
-
-    if ($text === "🇬🇷") {
-        country_wrapper('GR', 'greece', $client, $chat_id, $menu);
-        return;
-    }
-
-    if ($text === "🇧🇪") {
-        country_wrapper('BE', 'belgium', $client, $chat_id, $menu);
-        return;
-    }
-
-    if ($text === "🇮🇩") {
-        country_wrapper('ID', 'indonesia', $client, $chat_id, $menu);
-        return;
-    }
-
 
     // received invalid / old command, show help / new menu:
     $client->sendMessage($chat_id, "Press a button to use me. 😏", null, null, null, null, $menu);
