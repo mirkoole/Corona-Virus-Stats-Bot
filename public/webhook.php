@@ -288,7 +288,7 @@ if (isset($update->message) or isset($update->edited_message)) {
         country_wrapper('ID', 'indonesia', $client, $chat_id, $menu);
         return;
     }
-    
+
 
     // received invalid / old command, show help / new menu:
     $client->sendMessage($chat_id, "Press a button to use me. 😏", null, null, null, null, $menu);
@@ -322,7 +322,7 @@ function country_wrapper($countrycode, $country, $client, $chat_id, $menu)
     sleep(1);
 
     // image active
-    $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image_active.php?v=9&country=$country&date=" . date("y-m-d-H"), null, null, null, null, null);
+    $client->sendPhoto($chat_id, "https://codepunks.net/telegrambot/corona/public/image_active.php?v=10&country=$country&date=" . date("y-m-d-H"), null, null, null, null, null);
 
 
     // delay next request
