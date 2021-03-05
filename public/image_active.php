@@ -26,7 +26,7 @@ $max = 100;
 foreach ($result as $e) {
 
     $date = DateTime::createFromFormat('Y-m-d\TH:i:s+', $e['Date']);
-    $date = $date->format('j.n.');
+    $date = $date->format('j/n/y');
 
     $key = $date;
     $value = (int)$e['Active'];
@@ -72,7 +72,7 @@ $barWidth = 10;
 #$font = '/System/Library/Fonts/Supplemental/Verdana.ttf';
 $font = __DIR__ . '/fonts/Verdana.ttf';
 $fontSizeLabels = 12;
-$fontSizeX = 20;
+$fontSizeX = 18;
 $fontSizeY = 20;
 
 // Margin between label and axis
@@ -195,8 +195,8 @@ foreach ($data as $key => $value) {
     }
     */
 
-    if (substr($key, "0", "2") == "1.") {
-        imagettftext($chart, $fontSizeX, 0, $labelX, $labelY, $labelColor, $font, $key);
+    if (substr($key, "0", "2") == "1/") {
+        imagettftext($chart, $fontSizeX, 0, $labelX, $labelY, $labelColor, $font, substr($key, 2));
         #imageline($chart, $labelX+25, $labelY-20, $labelX+25, 150, $gridColor);
     }
 
